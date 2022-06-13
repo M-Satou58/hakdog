@@ -1,0 +1,107 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="d-flex" id="wrapper">
+            {% if user.is_authenticated %}
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light m-auto text-center"style="color: #001D6E;"><img src="{{request.user.teacher.school_logo.url}}" style="width:100px;"></div>
+
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/"><img src="{% static 'icons/home_icon_001.png' %}"><span class="ms-2 "style="color: #001D6E;">Home</span></a>
+                    {% if user.username == 'admin' %}
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 't-register'%}"><img src="{% static 'icons/teacher_icon_002.png' %}"><span class="ms-2 "style="color: #001D6E;">Teacher</span></a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 's-register'%}"><img src="{% static 'icons/student_icon_001.png' %}"><span class="ms-2 "style="color: #001D6E;">Student</span></a>
+                     
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'economy' %}"><img src="{% static 'icons/economy_icon_001.png' %}"><span class="ms-2 "style="color: #001D6E;">Economy</span></a>
+                     {% endif %}
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseSettings" role="button" aria-expanded="false" aria-controls="collapseSettings">
+                      <img src="{% static 'icons/settings_icon_001.png' %}"><span class="ms-2 "style="color: #001D6E;">Settings</span></a>
+                    <!--COLLAPSE -->
+                      <div class="collapse" id="collapseSettings">
+                        <div class="card card-body">
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="{% url 'account-settings' %}"><span class="ms-2 "style="color: #001D6E;">Account Settings</span></a>
+                           <a class="list-group-item list-group-item-action list-group-item-light p-1" href="{% url 'school-settings' user.id %}"><span class="ms-2 "style="color: #001D6E;">School Settings</span></a>
+                        </div>
+                      </div>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseSttings" role="button" aria-expanded="false" aria-controls="collapseSttings">
+
+                    <img src="{% static 'icons/rules_icon_001.png' %}"><span class="ms-2 "style="color: #001D6E;">Rules</span></a>
+                    <!--COLLAPSE -->
+                      <div class="collapse" id="collapseSttings">
+                        <div class="card card-body">
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="{% url 'jobs' user.id%}"><span class="ms-2 "style="color: #001D6E;">Jobs</span></a>
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="{% url 'opportunities' user.id %}"><span class="ms-2 "style="color: #001D6E;">Opportunities</span></a>
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="{% url 'house-rules' user.id %}"><span class="ms-2 "style="color: #001D6E;">House Rules</span></a>
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="{% url 'rent' user.id %}"><span class="ms-2 "style="color: #001D6E;">Rent</span></a>
+                        </div>
+                      </div>
+                      <!--COLLAPSE -->
+                      <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseMonitor" role="button" aria-expanded="false" aria-controls="collapseMonitor">
+                      <img src="{% static 'icons/monitor_icon_001.png' %}"><span class="ms-2 "style="color: #001D6E;">Monitor</span></a>
+                    <!--COLLAPSE -->
+                      <div class="collapse" id="collapseMonitor">
+                        <div class="card card-body">
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="{% url 'm-student' user.id %}"><span class="ms-2 "style="color: #001D6E;">Students</span></a>
+                        </div>
+                      </div>
+                      <!--COLLAPSE -->
+                      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#"><img src="{% static 'icons/shop_icon_001.png' %}" style="width:28px; height:28px;"><span class="ms-2 "style="color: #001D6E;">Item Store</span></a>
+
+                      <a class="list-group-item list-group-item-action list-group-item-light p-3" data-bs-toggle="collapse" href="#collapseMaterial" role="button" aria-expanded="false" aria-controls="collapseMaterial">
+                      <img src="{% static 'icons/materials_icon_001.png' %}"><span class="ms-2 "style="color: #001D6E;">Materials</span></a>
+                    <!--COLLAPSE -->
+                      <div class="collapse" id="collapseMaterial">
+                        <div class="card card-body">
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#"><span class="ms-2 "style="color: #001D6E;">Bill</span></a>
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#"><span class="ms-2 "style="color: #001D6E;">Jobs</span></a>
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#"><span class="ms-2 "style="color: #001D6E;">Business Envelopes</span></a>
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#"><span class="ms-2 "style="color: #001D6E;">Rules</span></a>
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#"><span class="ms-2 "style="color: #001D6E;">Certificate</span></a>
+                          <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#"><span class="ms-2 "style="color: #001D6E;">Debriefing Session</span></a>
+                        </div>
+                      </div>
+                      <!--COLLAPSE -->
+
+
+
+                </div>
+            </div>
+            {% endif %}
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        {% if user.is_authenticated %}
+                        <button class="btn" id="sidebarToggle"><span class="navbar-toggler-icon"></span></button>
+
+                        <div class="dropdown">
+                          <a class="btn dropdown-toggle" type="button" id="dropdownUserButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <small>{{user.username}}</small>
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownUserButton">
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                          </ul>
+                        </div>
+                        {% endif %}
+                        {% if user.is_authenticated == False %}
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active">{% include 'modal/login_modal.html' %}</li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid p-3">
+                    {% block item %}
+
+                    {% endblock item %}
+                </div>
+            </div>
+        </div>
+{% endblock content %}

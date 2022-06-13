@@ -1,0 +1,51 @@
+{% extends 'sidebar/sidebar.html' %}
+{% block item %}
+{% load static %}
+{% load crispy_forms_tags %}
+<style type="text/css">
+	label {
+		color: #001D6E;
+	}
+
+	.title-bg {
+		background-color: #7FB5FF;
+	}
+
+</style>
+<h6 class="title-bg p-2 shadow-sm" style="color: white;">Update <span style="color:green;">{{jobs.student_assigned.name}}</span></h6>
+	<div class="col-md-8 col-lg-8">
+		<form method="POST">
+		  {% csrf_token %}
+		   
+	    
+		  <div class="mb-1">
+		    <label for="exampleInputEmail1" class="form-label">Job:</label>
+		    {{form.job}}
+		  </div>
+
+		  <div class="mb-1">
+		    <label for="exampleInputEmail1" class="form-label">Suggested Per Class:</label>
+		    {{form.suggested_per_class}}
+		  </div>
+
+		  <div class="mb-1">
+		    <label for="exampleInputEmail1" class="form-label">Job Description:</label>
+		    {{form.job_description}}
+		  </div>
+
+		  <div class="mb-1">
+		    <label for="exampleInputEmail1" class="form-label">Salary:</label>
+		    {{form.salary}}
+		  </div>
+
+		  <div class="btn-group float-end mt-3 mb-3" role="group" aria-label="Basic example">
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			  <button type="button" class="btn btn-danger"><a class="text-decoration-none" style="color:white;" href="{% url 'jobs' user.id %}">Cancel</button>
+			</div>
+		  
+		</form>
+	</div>
+</div>
+
+
+{% endblock item %}

@@ -1,0 +1,80 @@
+{% extends 'sidebar/sidebar.html' %}
+{% block item %}
+{% load static %}
+{% load crispy_forms_tags %}
+<style type="text/css">
+	label {
+		color: #001D6E;
+	}
+
+	.title-bg {
+		background-color: #7FB5FF;
+	}
+
+</style>
+<h6 class="title-bg p-2 shadow-sm" style="color: white;">Item Store</h6>
+<div class="container">
+    	{% if messages %}
+    	{% for message in messages %}
+    		<div class="alert alert-{{message.tags}}">{{message}}</div>
+    	{% endfor %}
+    	{% endif %}
+    	</div>
+<div class="row">
+	<div class="col-md-8 col-lg-8">
+		<table class="table table-hover">
+			<thead>
+				<th>Item</th>
+				<th>Price</th>
+				<th>Purchaser</th>
+				<th>Action</th>
+			</thead>
+
+			{% for i in item %}
+			<tr>
+				<td>{{i.item}}</td>
+				<td>{{i.price}}</td>
+				<td>{{i.student}}</td>
+				<td><a href="{% url 'delete-item-store' i.pk user.id %}">Delete</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+<div class="col-md-4 col-lg-4">
+		
+		<h6 class="title-bg p-2 shadow-sm" style="color: white;">Buy Item</h6>
+		<form method="POST">
+		  {% csrf_token %}
+		   
+		  <div class="mb-1">
+		    <label for="exampleInputEmail1" class="form-label">Item</label>
+		    {{form.item}}
+		  </div>
+
+		  <div class="mb-1">
+		    <label for="exampleInputEmail1" class="form-label">Price</label>
+		    {{form.price}}
+		  </div>
+
+		   <div class="mb-1">
+		    <label for="exampleInputEmail1" class="form-label">Name</label>
+		    <select class="form-select" aria-label="Default select example" title="student_assigned" name="student_assigned">
+			  <option selected>----------</option>
+			  {% for i in sa%}
+			  <option value="{{i}}">{{i}}</option>
+			  {% endfor %}
+			</select>
+		  </div>
+		  
+		  <div class="btn-group float-end mt-3" role="group" aria-label="Basic example">
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			  <button type="button" class="btn btn-danger"><a class="text-decoration-none" style="color:white;" href="{% url 'item-store' user.id %}">Cancel</button>
+			</div>
+		  
+		</form>
+			</div>
+</div>
+
+
+{% endblock item %}

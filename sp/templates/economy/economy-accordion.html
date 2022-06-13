@@ -1,0 +1,48 @@
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  {% for i in e %}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-heading{{forloop.counter}}">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{forloop.counter}}">
+       #{{forloop.counter}} {{i.teacher.last_name}} {{i.teacher.first_name}} 
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{forloop.counter}}">
+      <div class="accordion-body">
+        <table class="table table-hover">
+          <thead class="">
+            <th>#</th>
+            <th>Name</th>
+            <th>Grade</th>
+            <th>Section</th>
+            <th>Status</th>
+            <th>Action</th>
+          </thead>
+          {% for j in i.student.all%}
+          {% if j.status == 'Active' %}
+          <tr class="">
+            <td>{{forloop.counter}}</td>
+            <td>{{j.name}}</td>
+            <td>{% if j.name.grade_level == 0 %}Kinder{% else %}1{% endif %}</td>
+            <td>{{j.name.section}}</td>
+            <td>{{j.status}}</td>
+            <td><a href="{% url 'set-active-economy' j.id%}" style="color:green;">Active</a> | <a href="{% url 'set-inactive-economy' j.id %}" style="color:red;">Inactive</a></td>
+          </tr>
+
+          {% else %}
+           <tr class="table-danger">
+            <td>{{forloop.counter}}</td>
+            <td>{{j.name}}</td>
+            <td>{% if j.name.grade_level == 0 %}Kinder{% else %}1{% endif %}</td>
+            <td>{{j.name.section}}</td>
+            <td>{{j.status}}</td>
+            <td><a href="{% url 'set-active-economy' j.id%}" style="color:green;">Active</a> | <a href="{% url 'set-inactive-economy' j.id %}" style="color:red;">Inactive</a></td>
+          </tr>
+          {% endif %}
+
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,39 @@
+{% extends 'sidebar/sidebar.html' %}
+{% block item %}
+{% load static %}
+{% load crispy_forms_tags %}
+<style type="text/css">
+	label {
+		color: #001D6E;
+	}
+
+	.title-bg {
+		background-color: #7FB5FF;
+	}
+
+</style>
+<h6 class="title-bg p-2 shadow-sm" style="color: white;">Monitoring</h6>
+
+		<table class="table table-hover">
+			<thead>
+				<th>Name</th>
+				<th>Job</th>
+				<th>Salary</th>
+				<th>Spend</th>
+				<th>Money</th>
+				<th>Purchased Item</th>
+			</thead>
+
+			{% for i in se %}
+			<tr>
+				<td>{{i.name}}</td>
+				<td>{{i.jobs}}</td>
+				<td>{{i.salary}}</td>
+				<td>{{i.spend}}</td>
+				<td>{{i.money}}</td>
+				<td>{{i.purchased}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+{% endblock item %}

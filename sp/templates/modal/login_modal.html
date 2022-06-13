@@ -1,0 +1,41 @@
+{% load static %}
+<style type="text/css">
+	label, h5 {
+		color: #001D6E;
+	}
+
+</style>
+
+<!-- Button trigger modal -->
+<a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal"><span>Login</span>
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<img class="img-fluid me-3" src="{% static 'icons/login_icon_001.png' %}" alt="login">
+        <h5 class="modal-title" id="loginModalLabel">Login As</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body container-fluid m-auto text-center pb-5 pt-5">
+        <div class="row">
+							<div class="col">
+								<a href="#"><button class="btn btn-default hover-shadow">
+									<img class="img-fluid" src="{% static 'logo/admin_logo.png' %}" alt="admin" style="width:150px; height:auto;">
+								</button></a>
+								<h4 style="color:#001D6E;">Admin</h4>
+								
+							</div>
+							<div class="col" data-mdb-ripple-color="light" data-dismis="modal">
+								<a href="#"><button class="btn btn-default hover-shadow">
+									<img class="img-fluid" src="{% static 'logo/teacher_logo.png' %}" alt="teacher" style="width:150px; height:auto;">
+								</button></a>
+								<h4 style="color:#001D6E;">Teacher</h4>
+							</div>
+					</div>
+      </div>
+    </div>
+  </div>
+</div>

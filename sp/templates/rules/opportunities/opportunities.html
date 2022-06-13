@@ -1,0 +1,57 @@
+{% extends 'sidebar/sidebar.html' %}
+{% block item %}
+{% load static %}
+{% load crispy_forms_tags %}
+<style type="text/css">
+	label {
+		color: #001D6E;
+	}
+
+	.title-bg {
+		background-color: #7FB5FF;
+	}
+
+</style>
+<h6 class="title-bg p-2 shadow-sm" style="color: white;">Opportunities</h6>
+<div class="container">
+    	{% if messages %}
+    	{% for message in messages %}
+    		<div class="alert alert-{{message.tags}}">{{message}}</div>
+    	{% endfor %}
+    	{% endif %}
+    	</div>
+<div class="row">
+	<div class="col-md-7 col-lg-7">
+		<table class="table table-hover">
+			<thead>
+				<th>Activity</th>
+				<th>Amount</th>
+				<th>Action</th>
+			</thead>
+
+			{% for i in opportunities%}
+			<tr>
+				<td>{{i.activity}}</td>
+				<td>{{i.amount}}</td>
+				<td><a href="{% url 'update-opportunities' user.id i.pk %}" style="color:gree;">Edit</a> | <a href="{% url 'delete-opportunities' user.id i.pk %}" style="color:red;">Delete</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+	<div class="col-md-5 col-lg-5">
+		<h6 class="title-bg p-2 shadow-sm" style="color: white;">Add Opportunities</h6>
+		<form method="POST">
+			{% csrf_token %}
+			{{form}}
+		  <div class="btn-group float-end mt-3" role="group" aria-label="Basic example">
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			  <button type="button" class="btn btn-danger"><a class="text-decoration-none" style="color:white;" href="{% url 'opportunities' user.id%}">Cancel</button>
+			</div>
+		  
+		</form>
+			</div>
+</div>
+
+
+{% endblock item %}

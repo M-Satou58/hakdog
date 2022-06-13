@@ -1,0 +1,51 @@
+{% extends 'sidebar/sidebar.html' %}
+{% load static %}
+{% block item %}
+<style type="text/css">
+	h2, h3 {
+		color: #001D6E;
+	}
+
+	p {
+		color: #4d4c48;
+	}
+</style>
+<div class="container">
+    	{% if messages %}
+    	{% for message in messages %}
+    		<div class="alert alert-{{message.tags}}">{{message}}</div>
+    	{% endfor %}
+    	{% endif %}
+    </div>
+<div class="container-fluid m-auto mt-2 text-center">
+	
+	<div class="container">
+		<img class="img-fluid" src="{% static 'logo/logo_002.png' %}" style="width:200px;">
+		<h2>SCHOOLPOST</h2>
+	</div>
+
+	<div class="container mt-3 text-start">
+		<h3>ABOUT DEVELOPERS</h3>
+		<p class="ms-2">We are information technology students from
+			Pamantasan ng Lungsod ng Valenzuela. We explore and
+			develop this schoolpost management tool with a virtual
+			banking system to reduce teacher’s workload and assist
+			students in managing their earned points or money in
+			an experiential way.</p>
+	</div>
+
+	<div class="container mt-3 text-start">
+		<h3>ABOUT SCHOOLPOST</h3>
+		<p class="ms-2">SCHOOLPOST is a virtual bank for teachers and
+			students where they can keep track of tasks and points
+			that the student must complete to pass the tasks. As
+			well as the students can apply for tasks and earn points
+			when they complete the tasks given. The student will
+			learn how to use a virtual bank as well as how to
+			manage money, save money, and spend responsibly
+			using our web-based system.</p>
+	</div>
+
+	
+</div>    
+{% endblock item %}

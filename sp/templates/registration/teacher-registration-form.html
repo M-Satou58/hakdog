@@ -1,0 +1,67 @@
+{% extends 'sidebar/sidebar.html' %}
+{% load static %}
+{% block item %}
+{% load crispy_forms_tags %}
+<style type="text/css">
+	label {
+		color: #001D6E;
+	}
+
+	.title-bg {
+		background-color: #7FB5FF;
+	}
+
+</style>
+<h6 class="title-bg p-2 shadow-sm" style="color: white;">Teacher's Registration Form</h6>
+<div class="container">
+    	{% if messages %}
+    	{% for message in messages %}
+    		<div class="alert alert-{{message.tags}}">{{message}}</div>
+    	{% endfor %}
+    	{% endif %}
+</div>
+	{{teacher_form.errors}}
+	{{teacher_form01.errors}}
+<form method="POST" class="col-md-8 col-lg-8 m-2">
+	{% csrf_token %}
+	<div class="mb-1">
+	    <label for="exampleInputEmail1" class="form-label">Last Name</label>
+	    {{teacher_form.last_name}}
+	</div>
+	<div class="mb-1">
+	    <label for="exampleInputEmail1" class="form-label">First Name</label>
+	    {{teacher_form.first_name}}
+	</div>
+	<div class="mb-1">
+	    <label for="exampleInputEmail1" class="form-label">Middle Name</label>
+	    {{teacher_form.middle_name}}
+	</div>
+	<div class="mb-1">
+	    <label for="exampleInputEmail1" class="form-label">Employee ID Num</label>
+	    {{teacher_form.employee_id_no}}
+	</div>
+	<div class="mb-1">
+	    <label for="exampleInputEmail1" class="form-label">Username</label>
+	    {{teacher_form01.username}}
+	</div>
+
+	<div class="mb-1">
+	    <label for="exampleInputEmail1" class="form-label">Email</label>
+	    {{teacher_form01.email}}
+	</div>
+
+	<div class="mb-1">
+	    <label for="exampleInputEmail1" class="form-label">Password</label>
+	    {{teacher_form01.password1}}
+	</div>
+
+	<div class="mb-1">
+	    <label for="exampleInputEmail1" class="form-label">Re-Type Password</label>
+	    {{teacher_form01.password2}}
+	</div>
+		
+	<button class="btn btn-outline-success mt-2 mb-2 float-end" type="submit">Register Teacher</button>
+
+	
+</form>
+{% endblock item %}
